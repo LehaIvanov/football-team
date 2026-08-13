@@ -1,12 +1,25 @@
 import { useState } from "react";
 import { positionLabels } from "../../data";
-import { Position } from "../../domain";
+import { Position, type Player } from "../../domain";
 import { Button } from "../Button";
 import styles from "./PlayerForm.module.scss";
 
-export const PlayerForm = () => {
+type PlayerFormProps = {
+  addPlayer: (value: Player) => void;
+};
+
+export const PlayerForm = ({ addPlayer }: PlayerFormProps) => {
   const [name, setName] = useState("");
   const [position, setPosition] = useState<Position | "">("");
+  const submit = () => {
+    if (position === "" || name.trim() === "") {
+      return;
+    }
+
+    addPlayer({ id: Math.floor(Math.random() * 1000000000), name, position });
+    setName("");
+    setPosition("");
+  };
 
   return (
     <form className={styles.form} aria-label="Данные игрока">
@@ -53,7 +66,7 @@ export const PlayerForm = () => {
         </select>
       </div>
 
-      <Button>Добавить</Button>
+      <Button onClick={submit}>Добавить</Button>
     </form>
   );
 };
