@@ -2,49 +2,17 @@ import clsx from "clsx";
 
 import fieldUrl from "../../assets/field.svg";
 import { positionLabels } from "../../data";
-import type { Player, Position } from "../../domain";
+import type { Player } from "../../domain";
 import { PlayerIcon } from "../PlayerIcon";
 import styles from "./FootballField.module.scss";
+import { useFootballField } from "./useFootballField";
 
 type FootballFieldProps = {
   players: Player[];
 };
 
-type Coordinates = {
-  x: number;
-  y: number;
-};
-
-const positionCoordinates: Record<Position, Coordinates[]> = {
-  goalkeeper: [{ x: 50, y: 91 }],
-  leftDefender: [{ x: 15, y: 65 }],
-  defender: [
-    { x: 38, y: 75 },
-    { x: 62, y: 75 },
-  ],
-  rightDefender: [{ x: 85, y: 65 }],
-  leftMidfielder: [{ x: 15, y: 40 }],
-  midfielder: [
-    { x: 38, y: 50 },
-    { x: 62, y: 50 },
-  ],
-  rightMidfielder: [{ x: 85, y: 40 }],
-  forward: [
-    { x: 35, y: 20 },
-    { x: 65, y: 20 },
-  ],
-};
-
 export const FootballField = ({ players }: FootballFieldProps) => {
-  const positionCounts: Partial<Record<Position, number>> = {};
-  const positionedPlayers = players.map((player) => {
-    const positionIndex = positionCounts[player.position] ?? 0;
-    const coordinates = positionCoordinates[player.position][positionIndex];
-
-    positionCounts[player.position] = positionIndex + 1;
-
-    return { player, coordinates };
-  });
+  const positionedPlayers = useFootballField(players);
 
   return (
     <div className={styles.field} aria-label="Расстановка команды 4-4-2">
