@@ -1,5 +1,5 @@
 import { positionLabels } from "../../data";
-import { positions } from "../../domain";
+import { Position } from "../../domain";
 import { Button } from "../Button";
 import styles from "./PlayerForm.module.scss";
 
@@ -31,7 +31,7 @@ export const PlayerForm = () => (
         <option value="" disabled>
           Выберите позицию
         </option>
-        {positions.map((position) => (
+        {Position.values.map((position) => (
           <option key={position} value={position}>
             {positionLabels[position]}
           </option>

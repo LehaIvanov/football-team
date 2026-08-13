@@ -1,4 +1,4 @@
-export const positions = [
+const values = [
   "goalkeeper",
   "forward",
   "leftDefender",
@@ -9,4 +9,6 @@ export const positions = [
   "rightMidfielder",
 ] as const;
 
-export type Position = (typeof positions)[number];
+export type Position = (typeof values)[number];
+
+export const Position = { values };
