@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 import fieldUrl from "../../assets/field.svg";
 import { positionLabels } from "../../data";
-import type { Player, Position } from "../../types";
+import type { Player, Position } from "../../domain";
 import { PlayerIcon } from "../PlayerIcon";
 import styles from "./FootballField.module.scss";
 

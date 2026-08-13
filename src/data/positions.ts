@@ -1,4 +1,4 @@
-import type { Position } from "../types";
+import type { Position } from "../domain";
 
 export const positionLabels: Record<Position, string> = {
   goalkeeper: "Вратарь",
@@ -11,4 +11,3 @@ export const positionLabels: Record<Position, string> = {
   rightMidfielder: "Правый полузащитник",
 };
 
-export const positions = Object.keys(positionLabels) as Position[];

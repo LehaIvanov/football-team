@@ -1,4 +1,5 @@
-import { positionLabels, positions } from "../../data";
+import { positionLabels } from "../../data";
+import { positions } from "../../domain";
 import { Button } from "../Button";
 import styles from "./PlayerForm.module.scss";
 
