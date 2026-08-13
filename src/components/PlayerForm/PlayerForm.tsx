@@ -1,5 +1,5 @@
-import { positionLabels, positions } from "../../data/positions";
-import { Button } from "../Button/Button";
+import { positionLabels, positions } from "../../data";
+import { Button } from "../Button";
 import styles from "./PlayerForm.module.scss";
 
 export const PlayerForm = () => (

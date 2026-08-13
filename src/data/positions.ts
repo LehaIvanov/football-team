@@ -1,4 +1,4 @@
-import type { Position } from "../types/position";
+import type { Position } from "../types";
 
 export const positionLabels: Record<Position, string> = {
   goalkeeper: "Вратарь",

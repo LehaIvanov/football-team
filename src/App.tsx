@@ -1,6 +1,5 @@
-import { FootballField } from "./components/FootballField/FootballField";
-import { PlayerForm } from "./components/PlayerForm/PlayerForm";
-import { players } from "./data/players";
+import { FootballField, PlayerForm } from "./components";
+import { players } from "./data";
 import styles from "./App.module.scss";
 
 export const App = () => {

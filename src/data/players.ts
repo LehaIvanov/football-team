@@ -1,4 +1,4 @@
-import type { Player } from "../types/player";
+import type { Player } from "../types";
 
 export const players: Player[] = [
   { id: 1, name: "Игрок 1", position: "goalkeeper" },

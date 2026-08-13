@@ -1,10 +1,9 @@
 import clsx from "clsx";
 
 import fieldUrl from "../../assets/field.svg";
-import { positionLabels } from "../../data/positions";
-import type { Player } from "../../types/player";
-import type { Position } from "../../types/position";
-import { PlayerIcon } from "../PlayerIcon/PlayerIcon";
+import { positionLabels } from "../../data";
+import type { Player, Position } from "../../types";
+import { PlayerIcon } from "../PlayerIcon";
 import styles from "./FootballField.module.scss";
 
 type FootballFieldProps = {
