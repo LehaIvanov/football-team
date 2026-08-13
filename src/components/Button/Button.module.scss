@@ -1,0 +1,20 @@
+.button {
+  height: 48px;
+  padding: 0 20px;
+  border: 0;
+  border-radius: 6px;
+  background: rgb(31 79 163);
+  color: rgb(255 255 255);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: rgb(23 61 128);
+}
+
+.button:focus-visible {
+  outline: 3px solid rgb(31 79 163 / 30%);
+  outline-offset: 2px;
+}

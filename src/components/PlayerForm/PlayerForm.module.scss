@@ -1,0 +1,39 @@
+.form {
+  display: flex;
+  padding: 28px;
+  border-radius: 12px;
+  flex-direction: column;
+  gap: 24px;
+  align-self: start;
+  background: rgb(255 255 255);
+  box-shadow: 0 10px 30px rgb(0 0 0 / 10%);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.control {
+  width: 100%;
+  min-width: 0;
+  height: 48px;
+  padding: 0 14px;
+  border: 1px solid rgb(189 197 206);
+  border-radius: 6px;
+  background: rgb(255 255 255);
+  color: rgb(17 17 17);
+  font: inherit;
+}
+
+.control:focus {
+  border-color: rgb(31 79 163);
+  outline: 2px solid rgb(31 79 163 / 20%);
+  outline-offset: 1px;
+}
