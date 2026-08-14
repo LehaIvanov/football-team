@@ -1,4 +1,4 @@
-import { positionLabels } from "../../data";
+import { positionLabels, positionLimits } from "../../data";
 import { Position, type Player } from "../../domain";
 import { Button } from "../Button";
 import { Card } from "../Card";
@@ -7,10 +7,16 @@ import { usePlayerForm } from "./usePlayerForm";
 
 type PlayerFormProps = {
   addPlayer: (value: Player) => void;
+  players: Player[];
 };
 
-export const PlayerForm = ({ addPlayer }: PlayerFormProps) => {
+export const PlayerForm = ({ addPlayer, players }: PlayerFormProps) => {
   const { name, setName, position, setPosition, submit } = usePlayerForm(addPlayer);
+  const availablePositions = Position.values.filter(
+    (position) =>
+      players.filter((player) => player.position === position).length <
+      positionLimits[position],
+  );
 
   return (
     <Card>
@@ -50,7 +56,7 @@ export const PlayerForm = ({ addPlayer }: PlayerFormProps) => {
             <option value="" disabled>
               Выберите позицию
             </option>
-            {Position.values.map((position) => (
+            {availablePositions.map((position) => (
               <option key={position} value={position}>
                 {positionLabels[position]}
               </option>

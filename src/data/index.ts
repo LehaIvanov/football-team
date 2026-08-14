@@ -1,2 +1,2 @@
 export { players } from "./players";
-export { positionLabels } from "./positions";
+export { positionLabels, positionLimits } from "./positions";

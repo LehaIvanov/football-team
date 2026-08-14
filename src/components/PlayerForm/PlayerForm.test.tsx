@@ -5,7 +5,7 @@ import { PlayerForm } from "./PlayerForm";
 
 describe("PlayerForm", () => {
   it("renders name and position fields", () => {
-    render(<PlayerForm addPlayer={() => {}} />);
+    render(<PlayerForm addPlayer={() => {}} players={[]} />);
 
     expect(screen.getByLabelText("Имя игрока")).toBeInTheDocument();
     expect(screen.getByLabelText("Позиция")).toBeInTheDocument();
@@ -18,7 +18,7 @@ describe("PlayerForm", () => {
     const user = userEvent.setup();
     const addPlayer = vi.fn();
 
-    render(<PlayerForm addPlayer={addPlayer} />);
+    render(<PlayerForm addPlayer={addPlayer} players={[]} />);
 
     const nameInput = screen.getByLabelText("Имя игрока");
     const positionSelect = screen.getByLabelText("Позиция");
@@ -40,5 +40,40 @@ describe("PlayerForm", () => {
 
     expect(nameInput).toHaveValue("");
     expect(positionSelect).toHaveValue("");
+  });
+
+  it("hides positions after all their places are filled", () => {
+    const { rerender } = render(
+      <PlayerForm
+        addPlayer={() => {}}
+        players={[
+          { id: "1", name: "Вратарь", position: "goalkeeper" },
+          { id: "2", name: "Нападающий 1", position: "forward" },
+        ]}
+      />,
+    );
+
+    expect(screen.queryByRole("option", { name: "Вратарь" })).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("option", { name: "Центральный нападающий" }),
+    ).toBeInTheDocument();
+
+    rerender(
+      <PlayerForm
+        addPlayer={() => {}}
+        players={[
+          { id: "1", name: "Вратарь", position: "goalkeeper" },
+          { id: "2", name: "Нападающий 1", position: "forward" },
+          { id: "3", name: "Нападающий 2", position: "forward" },
+        ]}
+      />,
+    );
+
+    expect(
+      screen.queryByRole("option", { name: "Центральный нападающий" }),
+    ).not.toBeInTheDocument();
+    expect(
+      screen.getByRole("option", { name: "Центральный защитник" }),
+    ).toBeInTheDocument();
   });
 });

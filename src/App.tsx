@@ -15,7 +15,7 @@ export const App = () => {
         {players.length === 11 ? (
           <SaveTeam saveTeam={saveTeam} />
         ) : (
-          <PlayerForm addPlayer={addPlayer} />
+          <PlayerForm addPlayer={addPlayer} players={players} />
         )}
         <FootballField players={players} />
       </div>
