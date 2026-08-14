@@ -10,7 +10,7 @@ describe("FootballField", () => {
   });
 
   it("renders Messi", () => {
-    render(<FootballField players={[{ id: 1, name: "Messi", position: "forward" }]} />);
+    render(<FootballField players={[{ id: "1", name: "Messi", position: "forward" }]} />);
 
     const player = screen.getByTitle("Центральный нападающий");
 
