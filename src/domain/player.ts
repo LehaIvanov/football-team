@@ -1,7 +1,7 @@
 import type { Position } from "./position";
 
 export type Player = {
-  id: number;
+  id: string;
   name: string;
   position: Position;
 };

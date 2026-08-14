@@ -1,25 +1,15 @@
-import { useState } from "react";
 import { positionLabels } from "../../data";
 import { Position, type Player } from "../../domain";
 import { Button } from "../Button";
 import styles from "./PlayerForm.module.scss";
+import { usePlayerForm } from "./usePlayerForm";
 
 type PlayerFormProps = {
   addPlayer: (value: Player) => void;
 };
 
 export const PlayerForm = ({ addPlayer }: PlayerFormProps) => {
-  const [name, setName] = useState("");
-  const [position, setPosition] = useState<Position | "">("");
-  const submit = () => {
-    if (position === "" || name.trim() === "") {
-      return;
-    }
-
-    addPlayer({ id: Math.floor(Math.random() * 1000000000), name, position });
-    setName("");
-    setPosition("");
-  };
+  const { name, setName, position, setPosition, submit } = usePlayerForm(addPlayer);
 
   return (
     <form className={styles.form} aria-label="Данные игрока">
